@@ -18,3 +18,10 @@ Node is shorthand for node.js.
 
 `sudo npm install` and `ng serve`
 
+1. In the 'src/' directory, we see the app's top level 'index.html' and 'style.css' files.
+2. 'main.ts' is where the app starts running.
+
+1. In the 'src/app/' sub-directory, we see 'app.component.ts' and 'app.component.css' files.
+2. 'app.component.ts' is the source file that describes the 'app-root' component.
+
+** Components ** are the basic building blocks of Angular.
