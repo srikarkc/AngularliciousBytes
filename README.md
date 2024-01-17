@@ -24,4 +24,4 @@ Node is shorthand for node.js.
 1. In the 'src/app/' sub-directory, we see 'app.component.ts' and 'app.component.css' files.
 2. 'app.component.ts' is the source file that describes the 'app-root' component.
 
-** Components ** are the basic building blocks of Angular.
+**Components** are the basic building blocks of Angular.
