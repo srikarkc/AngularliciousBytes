@@ -32,7 +32,7 @@ In the Hello World section, we updated the 'title' in index.html and then in the
 
 ---
 
-### Creating Home Component
+### I. Creating Home Component
 
 `ng generate component home --inline-template --skip-tests`
 
@@ -47,4 +47,138 @@ Need to add this component to the app root's component.
 imports: [
     HomeComponent
   ],
+```
+
+---
+
+### II. Creating Housing Location Component
+
+`ng generate component housingLocation --inline-template --skip-tests`
+
+We add the above component to the home component's modules. Similar to how we added the home component to the root component's modules. We have an import statement at the top.
+
+`import { HousingLocationComponent } from '../housing-location/housing-location.component';`
+
+Then, we add it to the imports section
+
+`imports: [CommonModule, HousingLocationComponent],`
+
+Then, in the template section, addd the following which is the component name (as defined by the selector).
+
+`<app-housing-location></app-housing-location>`
+
+---
+
+### III. Creating an interface
+
+**Interfaces** are custom data types for your app.
+
+In this section, we're creating an interface to represent properties that represent data about a single housing location.
+
+`ng generate interface housinglocation`
+
+The above command created a 'housinglocation.ts' file in 'src/app' directory.
+
+We add properties to the interface separated by semi-colons(;).
+
+e.g. id: number; name: string, etc.
+
+After creating the interface, in 'home.component.ts', we created a sample home.
+
+We imported the HousingLocation interface `import { HousingLocation } from '../housinglocation';`
+
+Then, we used the following format for the HousingComponent
+```
+housingLocation: HousingLocation = {
+    id: 9999,
+    name: 'Test Home',
+    city: 'Test City',
+    state: 'ST',
+    photo: `${this.baseUrl}/example-house.jpg`,
+    availableUnits: 99,
+    wifi: true,
+    laundry: false,
+  }
+```
+
+---
+
+### IV. Adding an input parameter to the component
+
+`@Input()` and use it to pass data to a component
+
+Inputs allow components to share data. The direction of data sharing is from Parent to Child component.
+
+In the 'housing-location.component.ts', we imported 'Input' and 'HousingLocation'. Then, we added the following in the class definition:
+`@Input() housingLocation!: HousingLocation;`
+
+The above line created an housingLocation variable/property of type 'HousingLocation'.
+The exclamation mark (!) is a non-null assertion operator and tells TypeScript compiler that the value of this property won't be null or undefined.
+
+---
+
+### V. Adding a property binding to a component's template
+
+Property binding enables you to connect a variable to an @Input in an Angular template. The data is then dynamically bound to the @Input.
+
+Property binding lets you set values for properties of HTMl elements or directives. 
+
+We edit the <app-housing-location> tag in 'home.component.ts'
+
+`<app-housing-location [housingLocation]="housingLocation"]></app-housing-location>`
+
+The square bracket [] are used to represent the property binding. `[attribute] = "value"`
+
+Let Angular know that the assigned value should be treated as a property from the component class and not a string value. The value on the right handside is the name of the property from the 'HomeComponent'.
+
+---
+
+### VI. Adding an interpolation to a component's template
+
+`{{ expression }}`
+
+---
+
+### VII. Using *ngFor directives
+
+**Directives** are classes that add additional behaviour to your Angular applications.
+
+We created a list of housing locations (HousingLocation[]) and in the template, we used the '*ngFor' directive.
+```
+housingLocationList: HousingLocation[] = [
+    {
+      id: 0,
+      name: 'Acme Fresh Start Housing',
+      city
+    }, ...
+  ]; 
+```
+```
+<app-housing-location 
+  *ngFor="let housingLocation of housingLocationList"
+  [housingLocation]="housingLocation">
+</app-housing-location>
+```
+
+---
+
+### VIII. Angular Services
+
+App has a service to serve the data to your app. Services provide a way to separate Angular app data and functions that can be used by multiple components in the App. A service must be made injectable.
+
+`ng generate service housing --skip-tests`
+
+We copy over the 'housingLocationList' array over to the service and import the 'inject' and 'HousingService' in Home component.
+
+Then, we update the 'HomeComponent'
+
+```
+export class HomeComponent {
+  housingLocationList: HousingLocation[] = [];
+  housingService: HousingService = inject(HousingService);
+
+  constructor() {
+    this.housingLocationList = this.housingService.getAllHousingLocations();
+  }
+}
 ```
