@@ -25,3 +25,26 @@ Node is shorthand for node.js.
 2. 'app.component.ts' is the source file that describes the 'app-root' component.
 
 **Components** are the basic building blocks of Angular.
+
+1. 'src/assets/' are the directory for storing images used by the app.
+
+In the Hello World section, we updated the 'title' in index.html and then in the 'app.component.ts', we updated the template and also the title variable in the AppComponent class.
+
+---
+
+### Creating Home Component
+
+`ng generate component home --inline-template --skip-tests`
+
+The above command created a home sub-directory inside the 'src/app/' directory 
+
+Need to add this component to the app root's component.
+
+1. Add the following import line
+`import { HomeComponent } from './home/home.component';`
+2. In the imports section, add HomeComponent
+```
+imports: [
+    HomeComponent
+  ],
+```
