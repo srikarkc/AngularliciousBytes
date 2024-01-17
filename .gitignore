@@ -1,1 +1,4 @@
 .angular/
+node_modules/
+first-app/package-lock.json
+package-lock.json

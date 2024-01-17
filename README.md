@@ -13,3 +13,8 @@ Node.js is an open-source, cross-platform JavaScript runtime environment used fo
 Node is shorthand for node.js.
 
 2. Install the latest version of Angular. `npm install -g @angular/cli`
+
+---
+
+`sudo npm install` and `ng serve`
+
