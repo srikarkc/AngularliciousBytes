@@ -182,3 +182,38 @@ export class HomeComponent {
   }
 }
 ```
+
+---
+
+### IX. Routing
+
+`ng generate component details --inline-template --skip-tests`
+
+1. Generate a 'details' component.
+2. Added routing to the application. Added a route.ts file to the 'src/app' directory. 
+3. In main.ts, we imported 'provideRouter' and 'routeConfig'. Added it to the list of providers.
+4. In app.component.ts, we imported 'RouterModule' and included it in the imports section.
+5. In the same file, we replaced '<app-home></app-home>' with '<router-outlet></router-outlet>'.
+5. In the above created 'routes.ts' file, we imported Routes, HomeComponent, & DetailsComponent. Then, we created a variable 'routeConfig' and exported it.
+
+```
+const routeConfig: Routes = [
+    {
+        path: '',
+        component: HomeComponent,
+        title: 'Home Page'
+    },
+    {
+        path: 'details/:id',
+        component: DetailsComponent,
+        title: 'Home details'
+    }
+];
+
+export default routeConfig;
+```
+
+---
+
+### X. Integrate the details page into the application
+
