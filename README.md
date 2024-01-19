@@ -217,3 +217,8 @@ export default routeConfig;
 
 ### X. Integrate the details page into the application
 
+`:id` created in the previous step is dynamic and will change based on how the route is requested by the code.
+
+Remember the basic flow: Define routes -> Configure RouterModule -> Place <router-outlet> -> Use routerLink or Router service for navigation.
+
+Associate <router-outlet> with a stage in a theater - it's where the action (components) takes place depending on the scene (route).
