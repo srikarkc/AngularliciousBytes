@@ -1,0 +1,12 @@
+<div style="text-align:center; margin-top:20px;">
+  <h1>Welcome to the Greeting App!</h1>
+  
+  <label for="nameInput">Enter your name:</label><br>
+  <input type="text" id="nameInput" [(ngModel)]="userName" placeholder="Enter your name">
+
+  <button (click)="displayGreeting()">Submit</button>
+  
+  <div *ngIf="greeting" style="margin-top:20px;">
+    <p>{{ greeting }}</p>
+  </div>
+</div>
